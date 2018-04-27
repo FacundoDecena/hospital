@@ -14,7 +14,7 @@ public class GeneradorTiempos {
      * Genera aleatoriamente el tiempo entre arribos
      * @return tiempo entre arribos
      */
-    public static int getTiempoEntreArribos(int tiempo,int tipo){
+    public static int getTiempoEntreArribos(double tiempo,int tipo){
         double aux = random.nextDouble();
         switch(tipo){
             case 0:
