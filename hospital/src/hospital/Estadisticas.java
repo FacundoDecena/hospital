@@ -9,11 +9,11 @@ public class Estadisticas {
     * @param tiempoFinSimulacion tiempo en el que termina la simulacion
     * @param cantidadItems cantidad de items que pasaron por el sistema
     */
-    public static void calcularEstadisticas(float tiempoEsperaCola, float tiempoTransito, float tiempoOcioso, 
-                                                    float tiempoFinSimulacion, int cantidadItems){
+    public static void calcularEstadisticas(double tiempoEsperaCola, double tiempoTransito, double tiempoOcioso, 
+                                                    double tiempoFinSimulacion, int cantidadItems){
         /*Para ver con minutos y segundos cambiar los comentarios*/
         int minuto;
-        float segundo, minutos; 
+        double segundo, minutos; 
         /*minuto = (int) tiempoEsperaCola/cantidadItems;
         segundo = (tiempoEsperaCola/cantidadItems%1)*60;
         System.out.printf("Tiempo promedio en cola: %d minutos con %.2f segundos\n",minuto,segundo);*/

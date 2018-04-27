@@ -3,8 +3,8 @@ package hospital;
 public class Servidor {
     private Item item;
     private boolean estado;
-    private float tiempoOcioso;
-    private float tiempoInicioOcio;
+    private double tiempoOcioso;
+    private double tiempoInicioOcio;
     private int tipo; //0 Residente, 1 General, 2 Especialista
 
     /**
@@ -57,7 +57,7 @@ public class Servidor {
      * @return Returns the tiempoOcioso.
      */
 
-    public float getTiempoOcioso() {
+    public double getTiempoOcioso() {
         return tiempoOcioso;
     }
 
@@ -65,7 +65,7 @@ public class Servidor {
     /**
      * @param tiempoOcioso The tiempoOcioso to set.
      */
-    public void setTiempoOcioso(float tiempoOcioso) {
+    public void setTiempoOcioso(double tiempoOcioso) {
         this.tiempoOcioso = tiempoOcioso;
     }
 
@@ -73,14 +73,14 @@ public class Servidor {
      * @return Returns the tiempoInicioOcio.
      */
 
-    public float getTiempoInicioOcio() {
+    public double getTiempoInicioOcio() {
         return tiempoInicioOcio;
     }
 
     /**
      * @param tiempoInicioOcio The tiempoInicioOcio to set.
      */
-    public void setTiempoInicioOcio(float tiempoInicioOcio) {
+    public void setTiempoInicioOcio(double tiempoInicioOcio) {
         this.tiempoInicioOcio = tiempoInicioOcio;
     }
 }

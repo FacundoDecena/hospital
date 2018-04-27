@@ -2,7 +2,7 @@ package hospital;
 
 public abstract class Evento {
     private int tipo;
-    private float tiempo;
+    private double tiempo;
     private Item item;
     
     /**
@@ -11,7 +11,7 @@ public abstract class Evento {
      * @param tiempo instante de tiempo en el que se encuentra la simulacion al momento de generar el evento
      * @param item item que participa del evento
      */
-    public Evento(int tipo,float tiempo,Item item){
+    public Evento(int tipo,double tiempo,Item item){
         this.tipo = tipo;
         this.tiempo = tiempo;
         this.item = item;
@@ -25,11 +25,11 @@ public abstract class Evento {
         this.item = item;
     }
 
-    public float getTiempo() {
+    public double getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(float tiempo) {
+    public void setTiempo(double tiempo) {
         this.tiempo = tiempo;
     }
 

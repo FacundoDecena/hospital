@@ -4,7 +4,7 @@ public class Principal {
 			
     public static void main(String[] args){
         Evento actual;
-        float tiempoSimulacion = 10080;//Establezco el tiempo de simulacion (1 semana)
+        double tiempoSimulacion = 10080;//Establezco el tiempo de simulacion (1 semana)
         Fel fel = Fel.getFel();//Creo la lista de eventos futuros
         //Declaracion de colas
         Queue queueResidente1 = new Queue();//Creo la cola de espera para el médico residente 1

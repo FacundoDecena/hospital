@@ -7,7 +7,7 @@ public class EventoSalida extends Evento {
      * @param tiempo instante de tiempo en el que se encuentra la simulacion al momento de generar el evento
      * @param item item que participa del evento
      */
-    public EventoSalida(float tiempo,Item item){
+    public EventoSalida(double tiempo,Item item){
         super(1,tiempo,item);
     }
     /**
@@ -20,7 +20,7 @@ public class EventoSalida extends Evento {
         Item item = super.getItem();
         if(queue.HayCola()){//Si hay cola, atiende el servido atiende al tope de la cola, generando su evento de salida
             super.setItem(queue.suprimirCola());
-            float tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio();
+            double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(item.getTipo());
             item.setTiempoDuracionServicio(tiempoServicioGenerado);
             EventoSalida eventoSalida = new EventoSalida(super.getTiempo()+tiempoServicioGenerado,super.getItem());
             Fel.getFel().insertarFel(eventoSalida);

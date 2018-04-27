@@ -2,10 +2,10 @@ package hospital;
 
 public class Item  {
     private int numero;
-    private float tiempoArribo;
-    private float tiempoDuracionServicio;
-    private static float tiempoEsperaCola=0;
-    private static float tiempoTransito=0;
+    private double tiempoArribo;
+    private double tiempoDuracionServicio;
+    private static double tiempoEsperaCola=0;
+    private static double tiempoTransito=0;
     private static int cantidadLeves=0;
     private static int cantidadMedios=0;
     private static int cantidadGraves=0;
@@ -15,7 +15,7 @@ public class Item  {
      * Constructor de la clase item
      * @param tiempoArribo tiempo en el que arriba el item 
      */
-    public Item(float tiempoArribo,int tipo){
+    public Item(double tiempoArribo,int tipo){
         this.tiempoArribo=tiempoArribo;
         this.tiempoDuracionServicio=0;
         this.numero=cantidadLeves+cantidadMedios+cantidadGraves;
@@ -80,7 +80,7 @@ public class Item  {
     /**
     * @return Returns the tiempoEsperaCola.
     */
-    public static float getTiempoEsperaCola() {
+    public static double getTiempoEsperaCola() {
         return tiempoEsperaCola;
     }
 
@@ -90,14 +90,14 @@ public class Item  {
     * @param tiempoDuracionServicio 
     * @param tiempoArribo
     */
-    public static void setTiempoEsperaCola(float tiempoActual, float tiempoDuracionServicio, float tiempoArribo) {
+    public static void setTiempoEsperaCola(double tiempoActual, double tiempoDuracionServicio, double tiempoArribo) {
         tiempoEsperaCola += tiempoActual - tiempoArribo - tiempoDuracionServicio;
     }
 
     /**
     * @return Returns the tiempoTransito.
     */
-    public static float getTiempoTransito() {
+    public static double getTiempoTransito() {
         return tiempoTransito;
     }
 
@@ -106,7 +106,7 @@ public class Item  {
     * @param tiempoActual
     * @param tiempoArribo
     */
-    public static void setTiempoTransito(float tiempoActual, float tiempoArribo) {
+    public static void setTiempoTransito(double tiempoActual, double tiempoArribo) {
         tiempoTransito += (tiempoActual - tiempoArribo);
     }
 
@@ -127,28 +127,28 @@ public class Item  {
     /**
     * @return Returns the tiempoArribo.
     */
-    public float getTiempoArribo() {
+    public double getTiempoArribo() {
         return tiempoArribo;
     }
 
     /**
     * @param tiempoArribo The tiempoArribo to set.
     */
-    public void setTiempoArribo(float tiempoArribo) {
+    public void setTiempoArribo(double tiempoArribo) {
         this.tiempoArribo = tiempoArribo;
     }
 
     /**
     * @return Returns the tiempoDuracionServicio.
     */
-    public float getTiempoDuracionServicio() {
+    public double getTiempoDuracionServicio() {
         return tiempoDuracionServicio;
     }
 
     /**
     * @param tiempoDuracionServicio The tiempoDuracionServicio to set.
     */
-    public void setTiempoDuracionServicio(float tiempoDuracionServicio) {
+    public void setTiempoDuracionServicio(double tiempoDuracionServicio) {
         this.tiempoDuracionServicio = tiempoDuracionServicio;
     }
     
