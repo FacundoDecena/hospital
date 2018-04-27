@@ -71,19 +71,29 @@ public class GeneradorTiempos {
     }
     
     /**
-     * Genera aleatoriamente el tiempo de duracion de servicio
-     * @return tiempo de duracion de servicio
+     * Genera aleatoriamente el tiempo de duracion de servicio de pacientes con afeccion leve
+     * @return tiempo de duracion de servicio de pacientes con afeccion leve
      */
-    public static int getTiempoDuracionServicioLeves(){
-
+    public static double getTiempoDuracionServicioLeves(){
+        return -30*Math.log(1-random.nextDouble());
     }
     
-    public static int getTiempoDuracionServicioMedios(){
-
+    public static double getTiempoDuracionServicioMedios(){
+        return 10*(random.nextDouble()+1);
     }
     
-    public static int getTiempoDuracionServicioGraves(){
-
+    public static double getTiempoDuracionServicioGraves(){
+        double sumaVariables=0;
+        for(int  i = 0; i<12 ; i++ )
+            sumaVariables+=random.nextDouble();
+        double z0 = sumaVariables - 6;
+        return z0*30+120;
+    }
+    
+    public static void main(String []args){
+        for (int i=0;i<10;i++)
+            System.out.println(getTiempoDuracionServicioGraves());
+        
     }
 }
 
