@@ -89,12 +89,6 @@ public class GeneradorTiempos {
         double z0 = sumaVariables - 6;
         return z0*30+120;
     }
-    
-    public static void main(String []args){
-        for (int i=0;i<10;i++)
-            System.out.println(getTiempoDuracionServicioGraves());
-        
-    }
 }
 
     
