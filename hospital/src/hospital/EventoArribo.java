@@ -6,7 +6,7 @@ public class EventoArribo extends Evento{
      * Constructor de la clase EventoArribo
      * @param tiempo instante de tiempo en el que se encuentra la simulacion al momento de generar el evento
      */
-    public EventoArribo(float tiempo, int tipo){
+    public EventoArribo(double tiempo, int tipo){
         super(0,tiempo,new Item(tiempo, tipo));
     } 
     /**
@@ -17,18 +17,18 @@ public class EventoArribo extends Evento{
     @Override
     public void planificarEvento(Servidor servidor,Queue queue){
         if(servidor.isEstado())//Si el servidor esta ocupado, pone al item en  la cola
-            queue.insertarCola(super.getItem());
+            queue.insertarCola(this.getItem());
         else{//Si no lo esta, atiende al evento y genera su salida (marca el servidor ocupado)
-            servidor.setTiempoOcioso(servidor.getTiempoOcioso()+super.getTiempo()-servidor.getTiempoInicioOcio());
+            servidor.setTiempoOcioso(servidor.getTiempoOcioso()+this.getTiempo()-servidor.getTiempoInicioOcio());
             servidor.setEstado(true);
-            int tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio();
+            double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(this.getTipo());
             super.getItem().setTiempoDuracionServicio(tiempoServicioGenerado);
-            EventoSalida es = new EventoSalida(super.getTiempo()+tiempoServicioGenerado,super.getItem());
+            EventoSalida es = new EventoSalida(this.getTiempo()+tiempoServicioGenerado,this.getItem());
             Fel.getFel().insertarFel(es);
         }
         //Genera el proximo evento de arribo
-        int tiempoEntreArribos = GeneradorTiempos.getTiempoEntreArribos();
-        EventoArribo ea = new EventoArribo(super.getTiempo()+tiempoEntreArribos,0);//CUIDADO ACA, EL 0 ES PARA QUE NO SALTE ERROR
+        int tiempoEntreArribos = GeneradorTiempos.getTiempoEntreArribos(this.getTiempo(),this.getTipo());
+        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,0);//CUIDADO ACA, EL 0 ES PARA QUE NO SALTE ERROR
         Fel.getFel().insertarFel(ea);
     }
 }
