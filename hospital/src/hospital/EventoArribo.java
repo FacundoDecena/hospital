@@ -28,7 +28,7 @@ public class EventoArribo extends Evento{
         }
         //Genera el proximo evento de arribo
         int tiempoEntreArribos = GeneradorTiempos.getTiempoEntreArribos(this.getTiempo(),this.getTipo());
-        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,0);//CUIDADO ACA, EL 0 ES PARA QUE NO SALTE ERROR
+        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,this.getTipo());
         Fel.getFel().insertarFel(ea);
     }
 }
