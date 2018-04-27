@@ -25,6 +25,10 @@ public class Queue {
     public boolean HayCola(){
         return !cola.isEmpty();
     }
+    
+    public int cantidadElementos(){
+        return cantidadItems;
+    }
 
     public void mostrarCola(){
         System.out.println("/////////////////////////////////////////");
