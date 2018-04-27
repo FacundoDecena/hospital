@@ -11,15 +11,20 @@ public class Estadisticas {
     */
     public static void calcularEstadisticas(float tiempoEsperaCola, float tiempoTransito, float tiempoOcioso, 
                                                     float tiempoFinSimulacion, int cantidadItems){
+        /*Para ver con minutos y segundos cambiar los comentarios*/
         int minuto;
-        float segundo; 
-        minuto = (int) tiempoEsperaCola/cantidadItems;
+        float segundo, minutos; 
+        /*minuto = (int) tiempoEsperaCola/cantidadItems;
         segundo = (tiempoEsperaCola/cantidadItems%1)*60;
-        System.out.printf("Tiempo promedio en cola: %d minutos con %.2f segundos\n",minuto,segundo);
+        System.out.printf("Tiempo promedio en cola: %d minutos con %.2f segundos\n",minuto,segundo);*/
+        minutos = tiempoEsperaCola/cantidadItems;
+        System.out.printf("Tiempo promedio en cola: %.2f minutos\n",minutos);
         System.out.printf("Porcentaje de tiempo ocioso: %.2f",tiempoOcioso/tiempoFinSimulacion*100);
         System.out.println(" %");
-        minuto = (int) tiempoTransito/cantidadItems;
+        /*minuto = (int) tiempoTransito/cantidadItems;
         segundo = (tiempoTransito/cantidadItems%1)*60;
-        System.out.printf("Tiempo medio de transito: %d minutos con %.2f segundos\n",minuto,segundo);
+        System.out.printf("Tiempo medio de transito: %d minutos con %.2f segundos\n",minuto,segundo);*/
+        minutos = tiempoTransito/cantidadItems;
+        System.out.printf("Tiempo medio de transito: %.2f minutos\n",minutos);
     }
 }
