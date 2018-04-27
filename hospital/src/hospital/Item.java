@@ -4,31 +4,54 @@ public class Item  {
     private int numero;
     private double tiempoArribo;
     private double tiempoDuracionServicio;
-    private static double tiempoEsperaCola=0;
-    private static double tiempoTransito=0;
-    private static int cantidadLeves=0;
-    private static int cantidadMedios=0;
-    private static int cantidadGraves=0;
+    
+    private static double tiempoEsperaColaLeve1 = 0;
+    private static double tiempoEsperaColaLeve2 = 0;
+    private static double tiempoEsperaColaMedio = 0;
+    private static double tiempoEsperaColaGrave1 = 0;
+    private static double tiempoEsperaColaGrave2 = 0;
+    
+    private static double tiempoTransitoLeve1 = 0;
+    private static double tiempoTransitoLeve2 = 0;
+    private static double tiempoTransitoMedio = 0;
+    private static double tiempoTransitoGrave1 = 0;
+    private static double tiempoTransitoGrave2 = 0;
+    
+    private static int cantidadLeves1 = 0;
+    private static int cantidadLeves2 = 0;
+    
+    private static int cantidadMedios = 0;
+    
+    private static int cantidadGraves1 = 0;
+    private static int cantidadGraves2 = 0;
+    
     private int tipo; //0: leve, 1: medio, 2:grave
     
     /**
      * Constructor de la clase item
      * @param tiempoArribo tiempo en el que arriba el item 
+     * @param tipo tipo de elemento
      */
-    public Item(double tiempoArribo,int tipo){
-        this.tiempoArribo=tiempoArribo;
-        this.tiempoDuracionServicio=0;
-        this.numero=cantidadLeves+cantidadMedios+cantidadGraves;
+    public Item(double tiempoArribo,int tipo, int servidor){
+        this.tiempoArribo = tiempoArribo;
+        this.tiempoDuracionServicio = 0;
+        this.numero = cantidadLeves1 + cantidadLeves2 + cantidadMedios + cantidadGraves1 + cantidadGraves2;
         this.tipo = tipo;
         switch(this.tipo){
             case 0:
-                cantidadLeves++;
+                if(servidor == 1)
+                    cantidadLeves1++;
+                else
+                    cantidadLeves2++;
                 break;
             case 1: 
                 cantidadMedios++;
                 break;
             case 2:
-                cantidadGraves++;
+                if(servidor == 4)
+                    cantidadGraves1++;
+                else
+                    cantidadGraves2++;
                 break;
         }
     }
