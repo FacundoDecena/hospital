@@ -8,7 +8,7 @@ public class EventoFinSimulacion extends Evento {
      * @param tipo tipo de evento
      */
     public EventoFinSimulacion(double tiempo,int tipo){
-        super(2,tiempo,new Item(tiempo,tipo));
+        super(2,tiempo,new Item(tiempo,tipo,0));//Le doy  porque es indistinto
     }
 
 

@@ -5,9 +5,11 @@ public class EventoArribo extends Evento{
     /**
      * Constructor de la clase EventoArribo
      * @param tiempo instante de tiempo en el que se encuentra la simulacion al momento de generar el evento
+     * @param tipo Tipo de arribo, leve, medio, grave
+     * @param servidor numero de servidor
      */
-    public EventoArribo(double tiempo, int tipo){
-        super(0,tiempo,new Item(tiempo, tipo));
+    public EventoArribo(double tiempo, int tipo, int servidor){
+        super(0,tiempo,new Item(tiempo, tipo,servidor));
     } 
     /**
      * Metodo que procesa un evento de arribo
@@ -28,7 +30,9 @@ public class EventoArribo extends Evento{
         }
         //Genera el proximo evento de arribo
         int tiempoEntreArribos = GeneradorTiempos.getTiempoEntreArribos(this.getTiempo(),this.getTipo());
-        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,this.getTipo());
+        ///////////////////////////*******************************/////////////////////////////////
+        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,this.getTipo(), 0);//CUIDADOOOO CON EL 0 DE ACAAAAAA
+        ///////////////////////////*******************************/////////////////////////////////
         Fel.getFel().insertarFel(ea);
     }
 }

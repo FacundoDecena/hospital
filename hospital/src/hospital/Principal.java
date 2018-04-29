@@ -21,13 +21,13 @@ public class Principal {
         
         EventoFinSimulacion fin = new EventoFinSimulacion(tiempoSimulacion,0);//Creo el evento de fin de simulacion
         fel.insertarFel(fin);//Lo inserto en la fel
-        actual = new EventoArribo(0,0);//Genero el primer arribo leve
+        actual = new EventoArribo(0,0,1);//Genero el primer arribo leve
         fel.insertarFel(actual);//Lo inserto en la fel
         
-        actual = new EventoArribo(0,1);//Genero el primer arribo medio
+        actual = new EventoArribo(0,1,3);//Genero el primer arribo medio
         fel.insertarFel(actual);//Lo inserto en la fel
         
-        actual = new EventoArribo(0,2);//Genero el primer arribo grave
+        actual = new EventoArribo(0,2,4);//Genero el primer arribo grave
         fel.insertarFel(actual);//Lo inserto en la fel
         
         while(actual.getTipo()!=2){//Mientras que no encuentre el evento de fin de simulacion 
