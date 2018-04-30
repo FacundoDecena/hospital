@@ -2,6 +2,7 @@ package hospital;
 
 public class Item  {
     private int numero;
+    private int servidor;
     private double tiempoArribo;
     private double tiempoDuracionServicio;
     
@@ -31,12 +32,14 @@ public class Item  {
      * Constructor de la clase item
      * @param tiempoArribo tiempo en el que arriba el item 
      * @param tipo tipo de elemento
+     * @param servidor
      */
     public Item(double tiempoArribo,int tipo, int servidor){
         this.tiempoArribo = tiempoArribo;
         this.tiempoDuracionServicio = 0;
         this.numero = cantidadLeves1 + cantidadLeves2 + cantidadMedios + cantidadGraves1 + cantidadGraves2;
         this.tipo = tipo;
+        this.servidor = servidor;
         switch(this.tipo){
             case 0:
                 if(servidor == 1)
@@ -58,53 +61,48 @@ public class Item  {
 
 
     /**
-    * @return Returns the cantidadLeves
+    * @return Retorna la cantidad de pacientes segun el sevidor, el numero del servidor esta mal retorna -1
     */
-    public static int getCantidadLeves() {
-        return cantidadLeves;
+    public static int getCantidad(int servidor) {
+        switch(servidor){
+            case 1: return cantidadLeves1;
+            case 2: return cantidadLeves2;
+            case 3: return cantidadMedios;
+            case 4: return cantidadGraves1;
+            case 5: return cantidadGraves2;
+            default: return -1;
+        }
+        
     }
 
     /**
     * @param cantidadLeves The cantidadLeves to set.
     */
-    public static void setCantidadLeves(int cantidadLeves) {
-        Item.cantidadLeves = cantidadLeves;
-    }
-    
-    /**
-    * @return Returns the cantidadMedios
-    */
-    public static int getCantidadMedios() {
-        return cantidadMedios;
-    }
-
-    /**
-    * @param cantidadMedios The cantidadMedios to set.
-    */
-    public static void setCantidadMedios(int cantidadMedios) {
-        Item.cantidadMedios = cantidadMedios;
-    }
-    
-    /**
-    * @return Returns the cantidadGraves
-    */
-    public static int getCantidadGraves() {
-        return cantidadGraves;
+    public static void setCantidadLeves(int servidor, int cantidad) {
+        switch(servidor){
+            case 1: Item.cantidadLeves1 = cantidad;break;
+            case 2: Item.cantidadLeves2 = cantidad;break;
+            case 3: Item.cantidadMedios = cantidad;break;
+            case 4: Item.cantidadGraves1 = cantidad;break;
+            case 5: Item.cantidadGraves1 = cantidad;break;
+            default: System.err.println("Le pifiaste crack");
+        }
+        
     }
 
     /**
-    * @param cantidadGraves The cantidadGraves to set.
+     * @param servidor
+    * @return Returns the tiempoEsperaCola dependiendo del servidor
     */
-    public static void setCantidadGraves(int cantidadGraves) {
-        Item.cantidadGraves = cantidadGraves;
-    }
-    
-
-    /**
-    * @return Returns the tiempoEsperaCola.
-    */
-    public static double getTiempoEsperaCola() {
-        return tiempoEsperaCola;
+    public static double getTiempoEsperaCola(int servidor) {
+        switch(servidor){
+            case 1: return tiempoEsperaColaLeve1;
+            case 2: return tiempoEsperaColaLeve2;
+            case 3: return tiempoEsperaColaMedio;
+            case 4: return tiempoEsperaColaGrave1;
+            case 5: return tiempoEsperaColaGrave2;
+            default: return -1;
+        }
     }
 
     /**
@@ -113,15 +111,29 @@ public class Item  {
     * @param tiempoDuracionServicio 
     * @param tiempoArribo
     */
-    public static void setTiempoEsperaCola(double tiempoActual, double tiempoDuracionServicio, double tiempoArribo) {
-        tiempoEsperaCola += tiempoActual - tiempoArribo - tiempoDuracionServicio;
+    public static void setTiempoEsperaCola(double tiempoActual, double tiempoDuracionServicio, double tiempoArribo,int servidor) {
+        switch(servidor){
+            case 1: tiempoEsperaColaLeve1 += tiempoActual - tiempoArribo - tiempoDuracionServicio;break;
+            case 2: tiempoEsperaColaLeve2 += tiempoActual - tiempoArribo - tiempoDuracionServicio;break;
+            case 3: tiempoEsperaColaMedio += tiempoActual - tiempoArribo - tiempoDuracionServicio;break;
+            case 4: tiempoEsperaColaGrave1 += tiempoActual - tiempoArribo - tiempoDuracionServicio;break;
+            case 5: tiempoEsperaColaGrave2 += tiempoActual - tiempoArribo - tiempoDuracionServicio;break;
+            default: System.err.println("Le pifiaste crack");
+        }
     }
 
     /**
     * @return Returns the tiempoTransito.
     */
-    public static double getTiempoTransito() {
-        return tiempoTransito;
+    public static double getTiempoTransito(int servidor) {
+        switch(servidor){
+            case 1: return tiempoTransitoLeve1;
+            case 2: return tiempoTransitoLeve2;
+            case 3: return tiempoTransitoMedio;
+            case 4: return tiempoTransitoGrave1;
+            case 5: return tiempoTransitoGrave2;
+            default: return -1;
+        }
     }
 
     /**
@@ -129,8 +141,15 @@ public class Item  {
     * @param tiempoActual
     * @param tiempoArribo
     */
-    public static void setTiempoTransito(double tiempoActual, double tiempoArribo) {
-        tiempoTransito += (tiempoActual - tiempoArribo);
+    public static void setTiempoTransito(double tiempoActual, double tiempoArribo, int servidor) {
+        switch(servidor){
+            case 1: tiempoTransitoLeve1 += (tiempoActual - tiempoArribo);break;
+            case 2: tiempoTransitoLeve2 += (tiempoActual - tiempoArribo);break;
+            case 3: tiempoTransitoMedio += (tiempoActual - tiempoArribo);break;
+            case 4: tiempoTransitoGrave1 += (tiempoActual - tiempoArribo);break;
+            case 5: tiempoTransitoGrave2 += (tiempoActual - tiempoArribo);break;
+            default: System.err.println("Le pifiaste crack");
+        }
     }
 
     /**
@@ -195,6 +214,6 @@ public class Item  {
      */
     @Override
     public String toString(){
-       return "Número: "+numero+"\n"+"Tiempo de arribo: "+tiempoArribo+"\n"+"Duracion del servicio: "+tiempoDuracionServicio+"\n";
+       return "Número: "+numero+"\n"+"Tiempo de arribo: "+tiempoArribo+"\n"+"Duracion del servicio: "+tiempoDuracionServicio+"\n"+"Tipo: "+tipo+"\n";
     }
 }
