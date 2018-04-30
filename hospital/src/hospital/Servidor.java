@@ -6,18 +6,24 @@ public class Servidor {
     private double tiempoOcioso;
     private double tiempoInicioOcio;
     private int tipo; //0 Residente, 1 General, 2 Especialista
+    private int numero;
 
     /**
      * @param tipo 0 Residente, 1 General, 2 Especialista
+     * @param numero numero del servidor 1-5
      */
-    public Servidor(int tipo){
+    public Servidor(int tipo, int numero){
         item=null; //No hay items en el servidor
         estado=false; //Desocupado
         tiempoOcioso=0;//No hay tiempo Ocioso
         tiempoInicioOcio=0;//Inicio de Ocio en 0
         this.tipo = tipo;
+        this.numero = numero;
     }
 
+    public int getNumero(){
+        return numero;
+    }
     /**
      * @return Retorna el tipo de servidor
      */
