@@ -30,7 +30,7 @@ public class EventoSalida extends Evento {
             servidor.setTiempoInicioOcio(super.getTiempo());
         }
         //Guarda los tiempos en cola y en transito
-        Item.setTiempoEsperaCola(super.getTiempo(), item.getTiempoDuracionServicio(), item.getTiempoArribo());
-        Item.setTiempoTransito(super.getTiempo(), item.getTiempoArribo());
+        Item.setTiempoEsperaCola(super.getTiempo(), item.getTiempoDuracionServicio(), item.getTiempoArribo(),servidor.getNumero());
+        Item.setTiempoTransito(super.getTiempo(), item.getTiempoArribo(),servidor.getNumero());
     }
 }
