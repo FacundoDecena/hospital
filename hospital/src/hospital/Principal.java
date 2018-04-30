@@ -13,11 +13,11 @@ public class Principal {
         Queue queueEspecialista1 = new Queue();//Creo la cola de espera para el médico especialista 1
         Queue queueEspecialista2 = new Queue();//Creo la cola de espera para el médico especialista 2
         //Declaracion de servidores
-        Servidor servidorResidente1 = new Servidor(0);//Creo el servidor
-        Servidor servidorResidente2 = new Servidor(0);//Creo el servidor
-        Servidor servidorGeneral = new Servidor(1);//Creo el servidor
-        Servidor servidorEspecialista1 = new Servidor(2);//Creo el servidor
-        Servidor servidorEspecialista2 = new Servidor(2);//Creo el servidor
+        Servidor servidorResidente1 = new Servidor(0,1);//Creo el servidor
+        Servidor servidorResidente2 = new Servidor(0,2);//Creo el servidor
+        Servidor servidorGeneral = new Servidor(1,3);//Creo el servidor
+        Servidor servidorEspecialista1 = new Servidor(2,4);//Creo el servidor
+        Servidor servidorEspecialista2 = new Servidor(2,5);//Creo el servidor
         
         EventoFinSimulacion fin = new EventoFinSimulacion(tiempoSimulacion,0);//Creo el evento de fin de simulacion
         fel.insertarFel(fin);//Lo inserto en la fel
@@ -50,16 +50,16 @@ public class Principal {
         }
         //Genero las estadísticas para los médicos residentes
         System.out.println("Estadística servidor residente 1");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(),Item.getTiempoTransito(),servidorResidente1.getTiempoOcioso(),tiempoSimulacion, Item.getCantidadLeves());
+        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(1),Item.getTiempoTransito(1),servidorResidente1.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(1));
         System.out.println("Estadística servidor residente 2");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(),Item.getTiempoTransito(),servidorResidente2.getTiempoOcioso(),tiempoSimulacion, Item.getCantidadLeves());
+        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(2),Item.getTiempoTransito(2),servidorResidente2.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(2));
         //Genero las estadísticas para el medico generalista
         System.out.println("Estadística servidor generalista");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(),Item.getTiempoTransito(),servidorGeneral.getTiempoOcioso(),tiempoSimulacion, Item.getCantidadMedios());
+        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(3),Item.getTiempoTransito(3),servidorGeneral.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(3));
         //Genero las estadisticas para los medicos especialistas
         System.out.println("Estadística servidor especialista 1");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(),Item.getTiempoTransito(),servidorEspecialista1.getTiempoOcioso(),tiempoSimulacion, Item.getCantidadGraves());
+        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(4),Item.getTiempoTransito(4),servidorEspecialista1.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(4));
         System.out.println("Estadística servidor especialista 2");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(),Item.getTiempoTransito(),servidorEspecialista2.getTiempoOcioso(),tiempoSimulacion, Item.getCantidadGraves());
+        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(5),Item.getTiempoTransito(5),servidorEspecialista2.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(5));
     }
 }
