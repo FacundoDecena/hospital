@@ -110,6 +110,7 @@ public class Item  {
     * @param tiempoActual 
     * @param tiempoDuracionServicio 
     * @param tiempoArribo
+     * @param servidor numero de servidor
     */
     public static void setTiempoEsperaCola(double tiempoActual, double tiempoDuracionServicio, double tiempoArribo,int servidor) {
         switch(servidor){
