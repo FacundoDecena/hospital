@@ -20,6 +20,7 @@ public class EventoSalida extends Evento {
         Item item = this.getItem();
         if(queue.HayCola()){//Si hay cola, atiende el servido atiende al tope de la cola, generando su evento de salida
             this.setItem(queue.suprimirCola());
+            servidor.setItem(this.getItem());
             double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(item.getTipo());
             item.setTiempoDuracionServicio(tiempoServicioGenerado);
             servidor.setCantidadItems(servidor.getCantidadItems()+1);

@@ -23,6 +23,7 @@ public class EventoArribo extends Evento{
         else{//Si no lo esta, atiende al evento y genera su salida (marca el servidor ocupado)
             servidor.setTiempoOcioso(servidor.getTiempoOcioso()+this.getTiempo()-servidor.getTiempoInicioOcio());
             servidor.setEstado(true);
+            servidor.setItem(this.getItem());
             double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(this.getItem().getTipo());
             this.getItem().setTiempoDuracionServicio(tiempoServicioGenerado);
             servidor.setCantidadItems(servidor.getCantidadItems()+1);
