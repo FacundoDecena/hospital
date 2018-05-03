@@ -34,10 +34,17 @@ public class Principal {
             actual = fel.suprimirFel();//Atiendo el evento en la primera posicion de la fel
             switch (actual.getItem().getTipo()){//Planifico el evento segun el tipo del cual sea
                 case 0:{
-                    if(queueResidente1.cantidadElementos()<=queueResidente2.cantidadElementos())//Si tienen la misma cantidad va a la cola 1, sino a la que tenga menos
+                    if(servidorResidente1.isEstado() == false)
                         actual.planificarEvento(servidorResidente1, queueResidente1);
                     else
-                        actual.planificarEvento(servidorResidente2, queueResidente2);
+                        if(servidorResidente2.isEstado() == false)
+                            actual.planificarEvento(servidorResidente2, queueResidente2);
+                        else{
+                            if(queueResidente1.cantidadElementos()<=queueResidente2.cantidadElementos())//Si tienen la misma cantidad va a la cola 1, sino a la que tenga menos
+                                actual.planificarEvento(servidorResidente1, queueResidente1);
+                            else
+                                actual.planificarEvento(servidorResidente2, queueResidente2);
+                        }
                     break;
                 }
                 case 1:{ 
@@ -45,10 +52,17 @@ public class Principal {
                     break;
                 }
                 case 2:{ 
-                    if(queueEspecialista1.cantidadElementos()<=queueEspecialista2.cantidadElementos())
+                    if(servidorEspecialista1.isEstado() == false)
                         actual.planificarEvento(servidorEspecialista1, queueEspecialista1);
                     else
-                        actual.planificarEvento(servidorEspecialista2, queueEspecialista2);
+                        if(servidorEspecialista2.isEstado() == false)
+                            actual.planificarEvento(servidorEspecialista2, queueEspecialista2);
+                        else{
+                            if(queueEspecialista1.cantidadElementos()<=queueEspecialista2.cantidadElementos())//Si tienen la misma cantidad va a la cola 1, sino a la que tenga menos
+                                actual.planificarEvento(servidorEspecialista1, queueEspecialista1);
+                            else
+                                actual.planificarEvento(servidorEspecialista2, queueEspecialista2);
+                        }
                     break;
                 }
             }
