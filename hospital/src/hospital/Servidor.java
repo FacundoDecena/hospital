@@ -3,10 +3,13 @@ package hospital;
 public class Servidor {
     private Item item;
     private boolean estado;
-    private double tiempoOcioso;
-    private double tiempoInicioOcio;
+    private double tiempoOcioso = 0.0;
+    private double tiempoInicioOcio = 0.0;
     private int tipo; //0 Residente, 1 General, 2 Especialista
     private int numero;
+    private int cantidadItems = 0;
+    private double tiempoEsperaCola = 0;
+    private double tiempoTransito = 0;
 
     /**
      * @param tipo 0 Residente, 1 General, 2 Especialista
@@ -19,6 +22,8 @@ public class Servidor {
         tiempoInicioOcio=0;//Inicio de Ocio en 0
         this.tipo = tipo;
         this.numero = numero;
+        cantidadItems = 0;
+        
     }
 
     public int getNumero(){
@@ -88,5 +93,29 @@ public class Servidor {
      */
     public void setTiempoInicioOcio(double tiempoInicioOcio) {
         this.tiempoInicioOcio = tiempoInicioOcio;
+    }
+    
+    public int getCantidadItems(){
+        return cantidadItems;
+    }
+    
+    public void setCantidadItems(int cantidadItems){
+        this.cantidadItems = cantidadItems;
+    }
+    
+    public double getTiempoEsperaCola(){
+        return tiempoEsperaCola;
+    }
+    
+    public void setTiempoEsperaCola(double tiempoEsperaCola){
+        this.tiempoEsperaCola+= tiempoEsperaCola; 
+    }
+    
+    public double getTiempoTransito(){
+        return tiempoTransito;
+    }
+    
+    public void setTiempoTransito(double tiempoTransito){
+        this.tiempoTransito+= tiempoTransito; 
     }
 }

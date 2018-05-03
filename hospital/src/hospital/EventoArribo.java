@@ -8,8 +8,8 @@ public class EventoArribo extends Evento{
      * @param tipo Tipo de arribo, leve, medio, grave
      * @param servidor numero de servidor
      */
-    public EventoArribo(double tiempo, int tipo, int servidor){
-        super(0,tiempo,new Item(tiempo, tipo,servidor));
+    public EventoArribo(double tiempo, int tipo){
+        super(0,tiempo,new Item(tiempo, tipo));
     } 
     /**
      * Metodo que procesa un evento de arribo
@@ -24,13 +24,14 @@ public class EventoArribo extends Evento{
             servidor.setTiempoOcioso(servidor.getTiempoOcioso()+this.getTiempo()-servidor.getTiempoInicioOcio());
             servidor.setEstado(true);
             double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(this.getTipo());
-            super.getItem().setTiempoDuracionServicio(tiempoServicioGenerado);
+            this.getItem().setTiempoDuracionServicio(tiempoServicioGenerado);
+            servidor.setCantidadItems(servidor.getCantidadItems()+1);
             EventoSalida es = new EventoSalida(this.getTiempo()+tiempoServicioGenerado,this.getItem());
             Fel.getFel().insertarFel(es);
         }
         //Genera el proximo evento de arribo
-        int tiempoEntreArribos = GeneradorTiempos.getTiempoEntreArribos(this.getTiempo(),this.getTipo());
-        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,this.getTipo(), servidor.getNumero());
+        int tiempoEntreArribos = GeneradorTiempos.getTiempoEntreArribos(this.getTiempo(),this.getItem().getTipo());
+        EventoArribo ea = new EventoArribo(this.getTiempo()+tiempoEntreArribos,this.getItem().getTipo());
         Fel.getFel().insertarFel(ea);
     }
 }

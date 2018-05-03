@@ -17,20 +17,21 @@ public class EventoSalida extends Evento {
     */   
     @Override
     public void planificarEvento(Servidor servidor,Queue queue) {
-        Item item = super.getItem();
+        Item item = this.getItem();
         if(queue.HayCola()){//Si hay cola, atiende el servido atiende al tope de la cola, generando su evento de salida
-            super.setItem(queue.suprimirCola());
+            this.setItem(queue.suprimirCola());
             double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(item.getTipo());
             item.setTiempoDuracionServicio(tiempoServicioGenerado);
-            EventoSalida eventoSalida = new EventoSalida(super.getTiempo()+tiempoServicioGenerado,super.getItem());
+            servidor.setCantidadItems(servidor.getCantidadItems()+1);
+            EventoSalida eventoSalida = new EventoSalida(this.getTiempo()+tiempoServicioGenerado,this.getItem());
             Fel.getFel().insertarFel(eventoSalida);
         }
         else{//Si no hay cola, marca el servidor como desocupado
             servidor.setEstado(false);
-            servidor.setTiempoInicioOcio(super.getTiempo());
+            servidor.setTiempoInicioOcio(this.getTiempo());
         }
         //Guarda los tiempos en cola y en transito
-        Item.setTiempoEsperaCola(super.getTiempo(), item.getTiempoDuracionServicio(), item.getTiempoArribo(),servidor.getNumero());
-        Item.setTiempoTransito(super.getTiempo(), item.getTiempoArribo(),servidor.getNumero());
+        servidor.setTiempoEsperaCola(this.getTiempo() - item.getTiempoArribo() - item.getTiempoDuracionServicio());
+        servidor.setTiempoTransito(this.getTiempo()- item.getTiempoArribo());
     }
 }

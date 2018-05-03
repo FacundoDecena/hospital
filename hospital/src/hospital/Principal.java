@@ -21,45 +21,50 @@ public class Principal {
         
         EventoFinSimulacion fin = new EventoFinSimulacion(tiempoSimulacion,0);//Creo el evento de fin de simulacion
         fel.insertarFel(fin);//Lo inserto en la fel
-        actual = new EventoArribo(0,0,1);//Genero el primer arribo leve
+        actual = new EventoArribo(0,0);//Genero el primer arribo leve
         fel.insertarFel(actual);//Lo inserto en la fel
         
-        actual = new EventoArribo(0,1,3);//Genero el primer arribo medio
+        actual = new EventoArribo(0,1);//Genero el primer arribo medio
         fel.insertarFel(actual);//Lo inserto en la fel
         
-        actual = new EventoArribo(0,2,4);//Genero el primer arribo grave
+        actual = new EventoArribo(0,2);//Genero el primer arribo grave
         fel.insertarFel(actual);//Lo inserto en la fel
         
         while(actual.getTipo()!=2){//Mientras que no encuentre el evento de fin de simulacion 
             actual = fel.suprimirFel();//Atiendo el evento en la primera posicion de la fel
-            switch (actual.getTipo()){//Planifico el evento segun el tipo del cual sea
+            switch (actual.getItem().getTipo()){//Planifico el evento segun el tipo del cual sea
                 case 0:{
                     if(queueResidente1.cantidadElementos()<=queueResidente2.cantidadElementos())//Si tienen la misma cantidad va a la cola 1, sino a la que tenga menos
                         actual.planificarEvento(servidorResidente1, queueResidente1);
                     else
                         actual.planificarEvento(servidorResidente2, queueResidente2);
+                    break;
                 }
-                case 1: actual.planificarEvento(servidorGeneral, queueGeneral);
-                case 2: {
+                case 1:{ 
+                    actual.planificarEvento(servidorGeneral, queueGeneral);
+                    break;
+                }
+                case 2:{ 
                     if(queueEspecialista1.cantidadElementos()<=queueEspecialista2.cantidadElementos())
                         actual.planificarEvento(servidorEspecialista1, queueEspecialista1);
                     else
                         actual.planificarEvento(servidorEspecialista2, queueEspecialista2);
+                    break;
                 }
             }
         }
         //Genero las estadísticas para los médicos residentes
         System.out.println("Estadística servidor residente 1");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(1),Item.getTiempoTransito(1),servidorResidente1.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(1));
-        System.out.println("Estadística servidor residente 2");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(2),Item.getTiempoTransito(2),servidorResidente2.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(2));
+        Estadisticas.calcularEstadisticas(servidorResidente1.getTiempoEsperaCola(),servidorResidente1.getTiempoTransito(),servidorResidente1.getTiempoOcioso(),tiempoSimulacion, servidorResidente1.getCantidadItems());
+        System.out.println("\nEstadística servidor residente 2");
+        Estadisticas.calcularEstadisticas(servidorResidente2.getTiempoEsperaCola(),servidorResidente2.getTiempoTransito(),servidorResidente2.getTiempoOcioso(),tiempoSimulacion, servidorResidente2.getCantidadItems());
         //Genero las estadísticas para el medico generalista
-        System.out.println("Estadística servidor generalista");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(3),Item.getTiempoTransito(3),servidorGeneral.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(3));
+        System.out.println("\nEstadística servidor generalista");
+        Estadisticas.calcularEstadisticas(servidorGeneral.getTiempoEsperaCola(),servidorGeneral.getTiempoTransito(),servidorGeneral.getTiempoOcioso(),tiempoSimulacion, servidorGeneral.getCantidadItems());
         //Genero las estadisticas para los medicos especialistas
-        System.out.println("Estadística servidor especialista 1");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(4),Item.getTiempoTransito(4),servidorEspecialista1.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(4));
-        System.out.println("Estadística servidor especialista 2");
-        Estadisticas.calcularEstadisticas(Item.getTiempoEsperaCola(5),Item.getTiempoTransito(5),servidorEspecialista2.getTiempoOcioso(),tiempoSimulacion, Item.getCantidad(5));
+        System.out.println("\nEstadística servidor especialista 1");
+        Estadisticas.calcularEstadisticas(servidorEspecialista1.getTiempoEsperaCola(),servidorEspecialista1.getTiempoTransito(),servidorEspecialista1.getTiempoOcioso(),tiempoSimulacion, servidorEspecialista1.getCantidadItems());
+        System.out.println("\nEstadística servidor especialista 2");
+        Estadisticas.calcularEstadisticas(servidorEspecialista2.getTiempoEsperaCola(),servidorEspecialista2.getTiempoTransito(),servidorEspecialista2.getTiempoOcioso(),tiempoSimulacion, servidorEspecialista2.getCantidadItems());
     }
 }
