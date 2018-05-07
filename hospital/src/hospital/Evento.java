@@ -17,29 +17,54 @@ public abstract class Evento {
         this.item = item;
     }
     
+    /**
+     * Getter del item del evento
+     * @return item del evento
+     */
     public Item getItem() {
         return item;
     }
-
+    
+    /**
+     * Setter del item del evento
+     * @param item del evento
+     */
     public void setItem(Item item) {
         this.item = item;
     }
 
+    /**
+     * Getter del tiempo del evento
+     * @return tiempo en el que transcurre el evento
+     */
     public double getTiempo() {
         return tiempo;
     }
-
+    
+    /**
+     * Setter del tiempo del evento
+     * @param tiempo en el que transcurre el evento
+     */
     public void setTiempo(double tiempo) {
         this.tiempo = tiempo;
     }
-
+    
+    /**
+     * Getter del tipo del evento
+     * @return tipo del evento. 0: Arribo, 1:Fin de Servicio, 2: Fin de Simulacion
+     */
     public int getTipo() {
         return tipo;
     }
-
+    
+    /**
+     * Setter del tipo del evento
+     * @param tipo del evento. 0: Arribo, 1:Fin de Servicio, 2: Fin de Simulacion
+     */
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
+    
     /**
      * @return un string que contiene toda la informacion del evento 
      */
@@ -49,4 +74,5 @@ public abstract class Evento {
     }
     
     public abstract void planificarEvento(Servidor servidor,Queue queue);
+
 }

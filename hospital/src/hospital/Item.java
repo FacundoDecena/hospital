@@ -11,8 +11,7 @@ public class Item  {
     /**
      * Constructor de la clase item
      * @param tiempoArribo tiempo en el que arriba el item 
-     * @param tipo tipo de elemento
-     * @param servidor
+     * @param tipo tipo de item. 0: leve, 1: medio, 2:grave
      */
     public Item(double tiempoArribo,int tipo){
         this.tiempoArribo = tiempoArribo;

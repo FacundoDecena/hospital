@@ -12,6 +12,7 @@ public class Servidor {
     private double tiempoTransito = 0;
 
     /**
+     * Constructor del servidor
      * @param tipo 0 Residente, 1 General, 2 Especialista
      * @param numero numero del servidor 1-5
      */
@@ -25,10 +26,14 @@ public class Servidor {
         cantidadItems = 0;
         
     }
-
+    /**
+     * Getter del numero de servidor
+     * @return numero de servidor
+     */
     public int getNumero(){
         return numero;
     }
+    
     /**
      * @return Retorna el tipo de servidor
      */
@@ -67,11 +72,9 @@ public class Servidor {
     /**
      * @return Returns the tiempoOcioso.
      */
-
     public double getTiempoOcioso() {
         return tiempoOcioso;
     }
-
 
     /**
      * @param tiempoOcioso The tiempoOcioso to set.
@@ -83,7 +86,6 @@ public class Servidor {
     /**
      * @return Returns the tiempoInicioOcio.
      */
-
     public double getTiempoInicioOcio() {
         return tiempoInicioOcio;
     }
@@ -95,26 +97,50 @@ public class Servidor {
         this.tiempoInicioOcio = tiempoInicioOcio;
     }
     
+    /**
+     * Getter de la cantidad de items que pasaron por el servidor
+     * @return cantidad de items que pasaron por el servidor
+     */
     public int getCantidadItems(){
         return cantidadItems;
     }
     
+    /**
+     * Setter de la cantidad de items que pasaron por el servidor
+     * @param cantidadItems que pasaron por el servidor to set
+     */
     public void setCantidadItems(int cantidadItems){
         this.cantidadItems = cantidadItems;
     }
     
+    /**
+     * Getter del tiempo de espera en cola total de los items que pasaron por el servidor
+     * @return tiempo de espera en cola total de los items que pasaron por el servidor
+     */
     public double getTiempoEsperaCola(){
         return tiempoEsperaCola;
     }
     
+    /**
+     * Setter del tiempo de espera en cola total de los items que pasaron por el servidor
+     * @return tiempoEsperaCola tiempo de espera en cola total de los items que pasaron por el servidor to set
+     */
     public void setTiempoEsperaCola(double tiempoEsperaCola){
         this.tiempoEsperaCola+= tiempoEsperaCola; 
     }
     
+    /**
+     * Getter del tiempo de transito total de los items que pasaron por el servidor
+     * @return tiempo de transito total de los items que pasaron por el servidor
+     */
     public double getTiempoTransito(){
         return tiempoTransito;
     }
     
+    /**
+     * Setter del tiempo de transito total de los items que pasaron por el servidor
+     * @param tiempoTransito tiempo de transito total de los items que pasaron por el servidor to set
+     */
     public void setTiempoTransito(double tiempoTransito){
         this.tiempoTransito+= tiempoTransito; 
     }

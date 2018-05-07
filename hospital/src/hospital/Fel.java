@@ -14,6 +14,9 @@ public class Fel{
         lista=new LinkedList();	
     }
     
+    /*
+    *Si existe, retorna la fel y si no la crea. 
+    */
     public static Fel getFel(){
             if(fel==null)
                     fel=new Fel();

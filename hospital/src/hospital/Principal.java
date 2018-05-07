@@ -4,7 +4,7 @@ public class Principal {
 			
     public static void main(String[] args){
         Evento actual;
-        double tiempoSimulacion = 10080;//Establezco el tiempo de simulacion (1 semana)
+        double tiempoSimulacion = 10080;//Establezco el tiempo de simulacion (168 hs)
         Fel fel = Fel.getFel();//Creo la lista de eventos futuros
         //Declaracion de colas
         Queue queueResidente1 = new Queue();//Creo la cola de espera para el médico residente 1
@@ -23,31 +23,29 @@ public class Principal {
         fel.insertarFel(fin);//Lo inserto en la fel
         actual = new EventoArribo(0,0);//Genero el primer arribo leve
         fel.insertarFel(actual);//Lo inserto en la fel
-        
         actual = new EventoArribo(0,1);//Genero el primer arribo medio
         fel.insertarFel(actual);//Lo inserto en la fel
-        
         actual = new EventoArribo(0,2);//Genero el primer arribo grave
         fel.insertarFel(actual);//Lo inserto en la fel
         
         while(actual.getTipo()!=2){//Mientras que no encuentre el evento de fin de simulacion 
             actual = fel.suprimirFel();//Atiendo el evento en la primera posicion de la fel
-            switch (actual.getItem().getTipo()){//Planifico el evento segun el tipo del cual sea
-                case 0:{
-                    if(actual.getTipo() == 1){
+            switch (actual.getItem().getTipo()){//Planifico el evento segun el tipo de item
+                case 0:{//Pacientes leves
+                    if(actual.getTipo() == 1){//Si es un evento de salida, determino que servidor lo atendio y planifico  el evento
                         if(servidorResidente1.isEstado() && servidorResidente1.getItem().getNumero() == actual.getItem().getNumero())
                             actual.planificarEvento(servidorResidente1, queueResidente1);
                         else
                              actual.planificarEvento(servidorResidente2, queueResidente2);
                     }
-                    else
+                    else//Si es un evento de arribo o de fin de servicio
                     {
-                        if(servidorResidente1.isEstado() == false)
+                        if(servidorResidente1.isEstado() == false)//Si el servidor 1 esta desocupado, lo atiende
                             actual.planificarEvento(servidorResidente1, queueResidente1);
                         else
-                            if(servidorResidente2.isEstado() == false)
+                            if(servidorResidente2.isEstado() == false)//Si el servidor 2 esta desocupado, lo atiende
                                 actual.planificarEvento(servidorResidente2, queueResidente2);
-                            else{
+                            else{//Si ambos estan ocupados me fijo que servidor tiene la cola mas corta y ese servidor lo atiende
                                 if(queueResidente1.cantidadElementos()<=queueResidente2.cantidadElementos())//Si tienen la misma cantidad va a la cola 1, sino a la que tenga menos
                                     actual.planificarEvento(servidorResidente1, queueResidente1);
                                 else
@@ -56,25 +54,25 @@ public class Principal {
                     }
                     break;
                 }
-                case 1:{ 
-                    actual.planificarEvento(servidorGeneral, queueGeneral);
+                case 1:{//Pacientes medios 
+                    actual.planificarEvento(servidorGeneral, queueGeneral);//Lo atiende
                     break;
                 }
-                case 2:{ 
+                case 2:{//Pacientes graves
                     
-                    if(actual.getTipo() == 1){
+                    if(actual.getTipo() == 1){//Si es un evento de salida, determino que servidor lo atendio y planifico  el evento
                         if(servidorEspecialista1.isEstado() && servidorEspecialista1.getItem().getNumero() == actual.getItem().getNumero())
                             actual.planificarEvento(servidorEspecialista1, queueEspecialista1);
                         else
                              actual.planificarEvento(servidorEspecialista2, queueEspecialista2);
                     }
-                    else{
-                        if(servidorEspecialista1.isEstado() == false)
+                    else{//Si es un evento de arribo o de fin de servicio
+                        if(servidorEspecialista1.isEstado() == false)//Si el servidor 1 esta desocupado, lo atiende
                             actual.planificarEvento(servidorEspecialista1, queueEspecialista1);
                         else
-                            if(servidorEspecialista2.isEstado() == false)
+                            if(servidorEspecialista2.isEstado() == false)//Si el servidor 2 esta desocupado, lo atiende
                                 actual.planificarEvento(servidorEspecialista2, queueEspecialista2);
-                            else{
+                            else{//Si ambos estan ocupados me fijo que servidor tiene la cola mas corta y ese servidor lo atiende
                                 if(queueEspecialista1.cantidadElementos()<=queueEspecialista2.cantidadElementos())//Si tienen la misma cantidad va a la cola 1, sino a la que tenga menos
                                     actual.planificarEvento(servidorEspecialista1, queueEspecialista1);
                                 else
