@@ -16,9 +16,9 @@ public class GeneradorTiempos {
      */
     public static int getTiempoEntreArribos(double tiempo,int tipo){
         double aux = random.nextDouble();
-        switch(tipo){
-            case 0:
-                if(((tiempo%1440)>= 420 && (tiempo%1440)<=540)||((tiempo%1440)>= 1200 && (tiempo%1440)<=1320)){
+        switch(tipo){//Según el tipo de paciente
+            case 0://Si es leve
+                if(((tiempo%1440)>= 420 && (tiempo%1440)<=540)||((tiempo%1440)>= 1200 && (tiempo%1440)<=1320)){//Y está en hora pico
                     if(aux<0.50)
                         return 10;
                     else{
@@ -28,7 +28,7 @@ public class GeneradorTiempos {
                             return 30;
                     }
                 }
-                else{
+                else{//Si no es hora pico entocnes
                     if(aux<0.30)
                         return 20;
                     else{
@@ -39,35 +39,35 @@ public class GeneradorTiempos {
                     }
                 }
             
-            case 1:
-                if(((tiempo%1440)>= 420 && (tiempo%1440)<=540)||((tiempo%1440)>= 1200 && (tiempo%1440)<=1320)){
+            case 1://Si es medio
+                if(((tiempo%1440)>= 420 && (tiempo%1440)<=540)||((tiempo%1440)>= 1200 && (tiempo%1440)<=1320)){//Y es en hora pico
                     if(aux<0.35)
                         return 40;
                     else
                         return 50;
                 }
-                else{
+                else{//Si no es hora pico
                     if(aux<0.25)
                         return 60;
                     else
                         return 70;
                 }
             
-            case 2:
-                if(((tiempo%1440)>= 420 && (tiempo%1440)<=540)||((tiempo%1440)>= 1200 && (tiempo%1440)<=1320)){
+            case 2://Si es grave
+                if(((tiempo%1440)>= 420 && (tiempo%1440)<=540)||((tiempo%1440)>= 1200 && (tiempo%1440)<=1320)){//Y es en hora pico
                     if(aux<0.4)
                         return 60;
                     else
                         return 90;
                 }
-                else{
+                else{//Si no es en hora pico
                     if(aux<0.5)
                         return 120;
                     else
                         return 180;
                 }  
                 
-            default: 
+            default: //Si envían mal el tipode paciente devuelve error
                 return -1;
         }
     }
@@ -78,20 +78,20 @@ public class GeneradorTiempos {
      */
     public static double getTiempoDuracionServicio(int tipo){
         switch(tipo){
-            case 0: 
+            case 0: //Si el item es de tipo leve
                 return -30*Math.log(1-random.nextDouble());
                 
-            case 1: 
+            case 1: //Si el item es de tipo medio
                 return 10*(random.nextDouble()+1);
                 
-            case 2:
-                double sumaVariables=0;
+            case 2://Si el item es de tipo grave
+                double sumaVariables = 0;
                 for(int  i = 0; i<12 ; i++ )
                     sumaVariables+=random.nextDouble();
                 double z0 = sumaVariables - 6;
                 return z0*30+120;
                 
-            default: 
+            default: //Si el item es de tipo incorrecto
                 return -1;
         }
     }

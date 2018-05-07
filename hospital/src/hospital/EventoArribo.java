@@ -21,13 +21,13 @@ public class EventoArribo extends Evento{
         if(servidor.isEstado())//Si el servidor esta ocupado, pone al item en  la cola
             queue.insertarCola(this.getItem());
         else{//Si no lo esta, atiende al evento y genera su salida (marca el servidor ocupado)
-            servidor.setTiempoOcioso(servidor.getTiempoOcioso()+this.getTiempo()-servidor.getTiempoInicioOcio());
-            servidor.setEstado(true);
-            servidor.setItem(this.getItem());
-            double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(this.getItem().getTipo());
+            servidor.setTiempoOcioso(servidor.getTiempoOcioso()+this.getTiempo()-servidor.getTiempoInicioOcio());//Setea el tiempo ocioso
+            servidor.setEstado(true);//Marca el servidor como ocupado
+            servidor.setItem(this.getItem());//Setea el item al que esta haciendo el servicio
+            double tiempoServicioGenerado = GeneradorTiempos.getTiempoDuracionServicio(this.getItem().getTipo());//Generamos tiempo de servicio
             this.getItem().setTiempoDuracionServicio(tiempoServicioGenerado);
-            servidor.setCantidadItems(servidor.getCantidadItems()+1);
-            EventoSalida es = new EventoSalida(this.getTiempo()+tiempoServicioGenerado,this.getItem());
+            servidor.setCantidadItems(servidor.getCantidadItems()+1);//Actualizamos cantidad de items
+            EventoSalida es = new EventoSalida(this.getTiempo()+tiempoServicioGenerado,this.getItem());//Genera su salida
             Fel.getFel().insertarFel(es);
         }
         //Genera el proximo evento de arribo
