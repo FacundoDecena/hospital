@@ -60,4 +60,10 @@ public class Queue {
         } 
         System.out.println("/////////////////////////////////////////");
     }
+    
+    public void reiniciarCola(){
+        cola.clear();
+        cantidadItems = 0;
+        
+    }
 }

@@ -87,7 +87,7 @@ public class GeneradorTiempos {
             case 2://Si el item es de tipo grave
                 double sumaVariables = 0;
                 for(int  i = 0; i<12 ; i++ )
-                    sumaVariables+=random.nextDouble();
+                    sumaVariables += random.nextDouble();
                 double z0 = sumaVariables - 6;
                 return z0*30+120;
                 
