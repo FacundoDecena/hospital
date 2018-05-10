@@ -58,5 +58,9 @@ public class Fel{
     public LinkedList getLista() {
             return lista;
     }
+    
+    public static void reiniciarFel(){
+        fel = null;
+    }
 	
 }

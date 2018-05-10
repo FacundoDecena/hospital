@@ -6,7 +6,6 @@ public class Servidor {
     private double tiempoOcioso = 0.0;
     private double tiempoInicioOcio = 0.0;
     private int tipo; //0 Residente, 1 General, 2 Especialista
-    private int numero;
     private int cantidadItems = 0;
     private double tiempoEsperaCola = 0;
     private double tiempoTransito = 0;
@@ -16,22 +15,14 @@ public class Servidor {
      * @param tipo 0 Residente, 1 General, 2 Especialista
      * @param numero numero del servidor 1-5
      */
-    public Servidor(int tipo, int numero){
+    public Servidor(int tipo){
         item=null; //No hay items en el servidor
         estado=false; //Desocupado
         tiempoOcioso=0;//No hay tiempo Ocioso
         tiempoInicioOcio=0;//Inicio de Ocio en 0
         this.tipo = tipo;
-        this.numero = numero;
         cantidadItems = 0;
         
-    }
-    /**
-     * Getter del numero de servidor
-     * @return numero de servidor
-     */
-    public int getNumero(){
-        return numero;
     }
     
     /**
@@ -145,11 +136,4 @@ public class Servidor {
         this.tiempoTransito+= tiempoTransito; 
     }
     
-    public void reiniciarEstadisticas(){
-        item=null; //No hay items en el servidor
-        estado=false; //Desocupado
-        tiempoOcioso=0;//No hay tiempo Ocioso
-        tiempoInicioOcio=0;//Inicio de Ocio en 0
-        cantidadItems = 0;
-    }
 }

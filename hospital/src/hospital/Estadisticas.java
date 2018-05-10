@@ -22,15 +22,5 @@ public class Estadisticas {
      */
     public static double calcularPorcentajeOcioso(double tiempoOcioso, double tiempoFinSimulacion){
         return ((tiempoOcioso/tiempoFinSimulacion)*100);    
-    }
-    /**
-     * 
-     * @param tiempoTransito suma de todos los tiempos en el que los items estuvieron en el sistema
-     * @param cantidadItems cantidad de items que pasaron por el sistema
-     * @return 
-     */
-    public static double calcularTiempoMedioTransito (double tiempoTransito, double cantidadItems){
-        return tiempoTransito/cantidadItems;
-    }
-    
+    } 
 }

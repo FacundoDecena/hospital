@@ -2,7 +2,7 @@ package hospital;
 
 public class Item  {
     private int numero;
-    private int servidor;
+    private Servidor servidor;
     private double tiempoArribo;
     private double tiempoDuracionServicio;
     private static int cantidadItems;
@@ -12,13 +12,15 @@ public class Item  {
      * Constructor de la clase item
      * @param tiempoArribo tiempo en el que arriba el item 
      * @param tipo tipo de item. 0: leve, 1: medio, 2:grave
+     * @param servidor servidor que atiende al item
      */
-    public Item(double tiempoArribo,int tipo){
+    public Item(double tiempoArribo,int tipo,Servidor servidor){
         this.tiempoArribo = tiempoArribo;
         this.tiempoDuracionServicio = 0;
         cantidadItems++;
         this.numero = cantidadItems;
         this.tipo = tipo;
+        this.servidor = servidor;
     }
 
     /**
@@ -35,6 +37,20 @@ public class Item  {
         this.numero = numero;
     }
 
+    /**
+    * @return Returns the servidor.
+    */
+    public Servidor getServidor() {
+        return servidor;
+    }
+
+    /**
+    * @param servidor The servidor to set.
+    */
+    public void setServidor(Servidor servidor) {
+        this.servidor = servidor;
+    }
+    
     /**
     * @return Returns the tiempoArribo.
     */
@@ -84,5 +100,9 @@ public class Item  {
     @Override
     public String toString(){
        return "Número: "+numero+"\n"+"Tiempo de arribo: "+tiempoArribo+"\n"+"Duracion del servicio: "+tiempoDuracionServicio+"\n"+"Tipo: "+tipo+"\n";
+    }
+    
+    public static void reiniciarCantidadDeItems(){
+        cantidadItems = 0;
     }
 }
