@@ -5,10 +5,8 @@ public class Principal {
     public static void main(String[] args){
         Evento actual;
         double tiempoSimulacion = 10080;//Establezco el tiempo de simulacion (168 hs)
-        
-        
-        
-        int cantidadCorridas =  1;
+
+        int cantidadCorridas =  1000000;
         double sumaTiempoOciosoLeve = 0, sumaTiempoEsperaColaLeve = 0,sumaTiempoOciosoMedio = 0, sumaTiempoEsperaColaMedio = 0,sumaTiempoOciosoGrave = 0, sumaTiempoEsperaColaGrave = 0;
         for(int i = 0; i<cantidadCorridas; i++){
             
@@ -121,23 +119,26 @@ public class Principal {
 
 
             sumaTiempoEsperaColaGrave += Estadisticas.calcularTiempoMedioCola(servidorEspecialista1.getTiempoEsperaCola(), servidorEspecialista1.getCantidadItems());
-            sumaTiempoOciosoLeve += Estadisticas.calcularPorcentajeOcioso(servidorEspecialista1.getTiempoOcioso(), tiempoSimulacion);
+            sumaTiempoOciosoGrave += Estadisticas.calcularPorcentajeOcioso(servidorEspecialista1.getTiempoOcioso(), tiempoSimulacion);
 
             sumaTiempoEsperaColaGrave += Estadisticas.calcularTiempoMedioCola(servidorEspecialista2.getTiempoEsperaCola(), servidorEspecialista2.getCantidadItems());
-            sumaTiempoOciosoLeve += Estadisticas.calcularPorcentajeOcioso(servidorEspecialista2.getTiempoOcioso(), tiempoSimulacion);
+            sumaTiempoOciosoGrave += Estadisticas.calcularPorcentajeOcioso(servidorEspecialista2.getTiempoOcioso(), tiempoSimulacion);
             
             Fel.reiniciarFel();
             Item.reiniciarCantidadDeItems();
         }
         
-        System.out.println("Tiempo medio espera en cola leve: "+sumaTiempoEsperaColaLeve/(cantidadCorridas*2)+" minutos");
-        System.out.println("Porcentaje tiempo ocioso residentes: %"+sumaTiempoOciosoLeve/(cantidadCorridas*2));
+        System.out.printf("Tiempo medio espera en cola leve: %.2f minutos\n",sumaTiempoEsperaColaLeve/(cantidadCorridas*2));
+        System.out.printf("Porcentaje tiempo ocioso residentes: %.2f",sumaTiempoOciosoLeve/(cantidadCorridas*2));
+        System.out.println(" %\n");
         
-        System.out.println("Tiempo medio espera en cola medio: "+sumaTiempoEsperaColaMedio/cantidadCorridas+" minutos");
-        System.out.println("Porcentaje tiempo ocioso generalista: %"+sumaTiempoOciosoMedio/cantidadCorridas);
+        System.out.printf("Tiempo medio espera en cola medio: %.2f minutos\n",sumaTiempoEsperaColaMedio/cantidadCorridas);
+        System.out.printf("Porcentaje tiempo ocioso generalista: %.2f",sumaTiempoOciosoMedio/cantidadCorridas);
+        System.out.println(" %\n");
         
-        System.out.println("Tiempo medio espera en cola grave: "+sumaTiempoEsperaColaGrave/(cantidadCorridas*2)+" minutos");
-        System.out.println("Porcentaje tiempo ocioso especialistas: %"+sumaTiempoOciosoGrave/(cantidadCorridas*2));
+        System.out.printf("Tiempo medio espera en cola grave: %.2f minutos\n",sumaTiempoEsperaColaGrave/(cantidadCorridas*2));
+        System.out.printf("Porcentaje tiempo ocioso especialistas: %.2f",sumaTiempoOciosoGrave/(cantidadCorridas*2));
+        System.out.println(" %\n");
         
     }
 }
