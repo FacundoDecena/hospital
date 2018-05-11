@@ -22,5 +22,40 @@ public class Estadisticas {
      */
     public static double calcularPorcentajeOcioso(double tiempoOcioso, double tiempoFinSimulacion){
         return ((tiempoOcioso/tiempoFinSimulacion)*100);    
-    } 
+    }
+    
+    
+    /**
+     * 
+     * @param cantidadCorridas cantidad de veces que se corre el programa
+     * @param medias arreglo de las medias de cada corrida
+     * @return media
+     */
+    public static double calcularMedia(int cantidadCorridas,double medias[]){
+        double suma = 0;
+        for(int i = 0;i<cantidadCorridas;i++){
+            suma += medias[i];
+        }
+        return suma/cantidadCorridas;
+    }
+    
+    
+    /**
+     * 
+     * @param cantidadCorridas cantidad de veces que se corre el programa
+     * @param media media de las medias
+     * @param medias arreglo de las medias de cada corrida
+     * @return desviacion estandar 
+     */
+    public static double calcularDesviacionEstandar(int cantidadCorridas,double media, double medias[]){
+        double suma = 0;
+        for(int i = 0;i<cantidadCorridas;i++){
+            suma += (medias[i]-media)*(medias[i]-media);
+        }
+        return Math.sqrt(suma/(cantidadCorridas-1));
+    }
+    
+    
+    
+    
 }
