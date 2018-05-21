@@ -157,14 +157,6 @@ public class Principal {
         System.out.printf("Porcentaje tiempo ocioso especialistas: %.2f",mediaTiempoOciosoGrave);
         System.out.println(" %\n");
         
-        double a = 0.1; 
-        System.out.printf("P(%.2f<=mediaTiempoEsperaColaLeve<=%.2f)=%.2f\n",mediaTiempoEsperaColaLeve-Estadisticas.calcularZ(1-a/2)*(desviacionTiempoEsperaColaLeve/Math.sqrt(cantidadCorridas)),mediaTiempoEsperaColaLeve+Estadisticas.calcularZ(1-a/2)*(desviacionTiempoEsperaColaLeve/Math.sqrt(cantidadCorridas)),1-a);
-        System.out.printf("P(%.2f<=mediaTiempoEsperaColaMedio<=%.2f)=%.2f\n",mediaTiempoEsperaColaMedio-Estadisticas.calcularZ(1-a/2)*(desviacionTiempoEsperaColaMedio/Math.sqrt(cantidadCorridas)),mediaTiempoEsperaColaMedio+Estadisticas.calcularZ(1-a/2)*(desviacionTiempoEsperaColaMedio/Math.sqrt(cantidadCorridas)),1-a);
-        System.out.printf("P(%.2f<=mediaTiempoEsperaColaGrave<=%.2f)=%.2f\n\n",mediaTiempoEsperaColaGrave-Estadisticas.calcularZ(1-a/2)*(desviacionTiempoEsperaColaGrave/Math.sqrt(cantidadCorridas)),mediaTiempoEsperaColaGrave+Estadisticas.calcularZ(1-a/2)*(desviacionTiempoEsperaColaGrave/Math.sqrt(cantidadCorridas)),1-a);
-        
-        System.out.printf("P(%.2f<=mediaPorcentajeTiempoOciosoLeve<=%.2f)=%.2f\n",mediaTiempoOciosoLeve-Estadisticas.calcularZ(1-a/2)*(desviacionTiempoOciosoLeve/Math.sqrt(cantidadCorridas)),mediaTiempoOciosoLeve+Estadisticas.calcularZ(1-a/2)*(desviacionTiempoOciosoLeve/Math.sqrt(cantidadCorridas)),1-a);
-        System.out.printf("P(%.2f<=mediaPorcentajeTiempoOciosoMedio<=%.2f)=%.2f\n",mediaTiempoOciosoMedio-Estadisticas.calcularZ(1-a/2)*(desviacionTiempoOciosoMedio/Math.sqrt(cantidadCorridas)),mediaTiempoOciosoMedio+Estadisticas.calcularZ(1-a/2)*(desviacionTiempoOciosoMedio/Math.sqrt(cantidadCorridas)),1-a);
-        System.out.printf("P(%.2f<=mediaPorcentajeTiempoOciosoGrave<=%.2f)=%.2f\n",mediaTiempoOciosoGrave-Estadisticas.calcularZ(1-a/2)*(desviacionTiempoOciosoGrave/Math.sqrt(cantidadCorridas)),mediaTiempoOciosoGrave+Estadisticas.calcularZ(1-a/2)*(desviacionTiempoOciosoGrave/Math.sqrt(cantidadCorridas)),1-a);
     }
 }
     
