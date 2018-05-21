@@ -145,17 +145,25 @@ public class Principal {
         desviacionTiempoOciosoGrave = Estadisticas.calcularDesviacionEstandar(cantidadCorridas,mediaTiempoOciosoGrave, mediasTiempoOciosoGrave);
         
         
-        System.out.printf("Tiempo medio espera en cola leve: %.2f minutos\n",mediaTiempoEsperaColaLeve);
-        System.out.printf("Porcentaje tiempo ocioso residentes: %.2f",mediaTiempoOciosoLeve);
+        System.out.printf("Espera en cola leve\n\tMedia: %.2f minutos\n\tDesviacion: %.2f minutos\n\n",mediaTiempoEsperaColaLeve,desviacionTiempoEsperaColaLeve);
+        System.out.printf("Tiempo ocioso residentes\n\tMedia %.2f",mediaTiempoOciosoLeve);
+        System.out.println(" %");
+        System.out.printf("\tDesviacion: %.2f",desviacionTiempoOciosoLeve);
         System.out.println(" %\n");
         
-        System.out.printf("Tiempo medio espera en cola medio: %.2f minutos\n",mediaTiempoEsperaColaMedio);
-        System.out.printf("Porcentaje tiempo ocioso generalista: %.2f",mediaTiempoOciosoMedio);
+        System.out.printf("Tiempo medio espera en cola medio\n\tMedia: %.2f minutos\n\tDesviacion: %.2f minutos\n\n",mediaTiempoEsperaColaMedio,desviacionTiempoEsperaColaMedio);
+        System.out.printf("Tiempo ocioso generalista\n\tMedia: %.2f",mediaTiempoOciosoMedio);
+        System.out.println(" %");
+        System.out.printf("\tDesviacion: %.2f",desviacionTiempoOciosoMedio);
         System.out.println(" %\n");
         
-        System.out.printf("Tiempo medio espera en cola grave: %.2f minutos\n",mediaTiempoEsperaColaGrave);
-        System.out.printf("Porcentaje tiempo ocioso especialistas: %.2f",mediaTiempoOciosoGrave);
-        System.out.println(" %\n");
+        System.out.printf("Espera en cola grave\n\tMedia: %.2f minutos\n\tDesviacion: %.2f minutos\n\n",mediaTiempoEsperaColaGrave,desviacionTiempoEsperaColaGrave);
+        System.out.printf("Tiempo ocioso especialistas\n\tMedia: %.2f",mediaTiempoOciosoGrave);
+        System.out.println(" %");
+        System.out.printf("\tDesviacion: %.2f",desviacionTiempoOciosoGrave);
+        System.out.println(" %");
+        
+        
         
     }
 }
