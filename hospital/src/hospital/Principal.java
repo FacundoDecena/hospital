@@ -151,7 +151,7 @@ public class Principal {
         System.out.printf("\tDesviacion: %.2f",desviacionTiempoOciosoLeve);
         System.out.println(" %\n");
         
-        System.out.printf("Tiempo medio espera en cola medio\n\tMedia: %.2f minutos\n\tDesviacion: %.2f minutos\n\n",mediaTiempoEsperaColaMedio,desviacionTiempoEsperaColaMedio);
+        System.out.printf("Espera en cola medio\n\tMedia: %.2f minutos\n\tDesviacion: %.2f minutos\n\n",mediaTiempoEsperaColaMedio,desviacionTiempoEsperaColaMedio);
         System.out.printf("Tiempo ocioso generalista\n\tMedia: %.2f",mediaTiempoOciosoMedio);
         System.out.println(" %");
         System.out.printf("\tDesviacion: %.2f",desviacionTiempoOciosoMedio);
